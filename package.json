@@ -1,0 +1,20 @@
+{
+  "name": "gestion-eventos-academicos",
+  "version": "1.0.0",
+  "description": "Plataforma web para la organización, inscripción y certificación de eventos académicos.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": ["docker", "nodejs", "postgres", "eventos"],
+  "author": "Gastón",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "pg": "^8.11.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
