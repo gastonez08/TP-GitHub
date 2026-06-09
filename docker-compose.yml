@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  # Servicio de la Aplicación Web
+  web-app:
+    build: .
+    container_name: eventos_web_app
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - DB_HOST=db-postgres
+      - DB_PORT=5432
+      - DB_USER=admin_eventos
+      - DB_PASSWORD=secure_password_123
+      - DB_NAME=academicos_db
+    depends_on:
+      - db-postgres
+
+  # Servicio de la Base de Datos (Persistencia)
+  db-postgres:
+    image: postgres:15-alpine
+    container_name: eventos_db_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin_eventos
+      POSTGRES_PASSWORD: secure_password_123
+      POSTGRES_DB: academicos_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
